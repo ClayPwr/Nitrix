@@ -15,6 +15,7 @@ class CollectionViewController: UIViewController {
 
     var album: PhotoTableCellModel?
     var photos: [Photos] = []
+    var selectedPhoto: Photos?
     
     let dataFetcherService = DataFetcherService()
     
@@ -119,16 +120,16 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        selectedPhoto = photos[indexPath.row]
+        
         performSegue(withIdentifier: "ShowImage", sender: nil)
-        
-        
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
-        let photo = photos[indexPath.row]
+
         let ImageVC = segue.destination as! FullScreenImageViewController
-        ImageVC.imageUrl = photo
+        ImageVC.imageUrl = selectedPhoto
     }
 }

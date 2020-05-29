@@ -35,7 +35,7 @@ class FullScreenImageViewController: UIViewController {
     
     func addConstraint(){
         imageView.snp.makeConstraints { (make) in
-            
+
             make.left.right.bottom.top.equalToSuperview()
         }
     }
