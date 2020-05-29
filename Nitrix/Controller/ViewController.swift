@@ -44,34 +44,6 @@ class ViewController: UIViewController {
         }
     }
     
-
-    
-//    func configureURLImage(photo: [PhotoSet]) -> [String] {
-//        var imageUrls: [String] = []
-//        //let i = "https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg"
-//        let defaultUrl = "https://farm2.staticflickr.com/1635/24890560159_e9b30b4335_m.jpg"
-//        let urlString = "https://farm"
-//        for value in photo {
-//            let farm = String(value.farm)
-//            let server = value.server
-//            let primary = value.primary
-//            let secret = value.secret
-//            if !farm.isEmpty && !server.isEmpty && !primary.isEmpty && !secret.isEmpty {
-//               let url = urlString.appending(farm + ".").appending("staticflickr.com/").appending(server + "/").appending(primary + "_").appending(secret + "_m.jpg")
-////                return url
-//                imageUrls.append(url)
-//            }else {
-////                return defaultUrl
-//                imageUrls.append(defaultUrl)
-//            }
-//
-//        }
-//        return imageUrls
-//    }
-    
-
-    
-    
     func addSubView() {
         view.addSubview(tableView)
         tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.tableViewCell)
@@ -100,8 +72,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         
         let photoCell = photoTableCell[indexPath.row]
-//        let photoSet = photoSets[indexPath.row]
-//        let photoSetImage = imageUrls[indexPath.row]
         cell.configureCell(from: photoCell)
         
         

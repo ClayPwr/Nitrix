@@ -85,20 +85,4 @@ public class TableViewCell: UITableViewCell {
         }
     }
     
-//    func configureCell(from: PhotoSet, urlString: String) {
-//        commentsLabel.text = String(from.count_comments ?? "0") + " comments"
-//        photoSetLabel.text = from.title._content
-//        numberItemsLabel.text = String(from.count_photos) + " Items"
-//        viewsLabel.text = String(from.count_views ?? "0") + " Views"
-//        //cell.imageViewContent.image = UIImage(contentsOfFile: "imageDragon")
-//        //imageViewContent.image = UIImage(named: "imageDragon")
-//        guard let url = URL(string: urlString) else { return }
-//        DispatchQueue.global().async {
-//            guard let data = try? Data(contentsOf: url) else { return }
-//            DispatchQueue.main.async {
-//                self.imageViewContent.image = UIImage(data: data)
-//            }
-//        }
-//    }
-    
 }

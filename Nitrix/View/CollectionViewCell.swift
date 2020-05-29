@@ -19,7 +19,6 @@ class CollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.layer.masksToBounds = true
         image.layer.cornerRadius = 25
-//        image.backgroundColor = .blue
         return image
     }()
     

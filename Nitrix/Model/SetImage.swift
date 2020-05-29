@@ -28,8 +28,6 @@ class SetImage {
             guard let data = try? Data(contentsOf: urlStr) else { return }
             DispatchQueue.main.async {
                 
-            //return UIImage(data: data)
-                
             }
         }
         return url
