@@ -23,13 +23,6 @@ class SetImage {
             let url = urlString.appending(farm + ".").appending("staticflickr.com/").appending(server + "/").appending(primary + "_").appending(secret + "_b.jpg")
             return url
         }
-        guard let urlStr = URL(string: url) else { return nil }
-        DispatchQueue.global().async {
-            guard let data = try? Data(contentsOf: urlStr) else { return }
-            DispatchQueue.main.async {
-                
-            }
-        }
         return url
     }
 }

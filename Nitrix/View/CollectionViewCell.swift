@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CollectionViewCell: UICollectionViewCell {
     
@@ -22,9 +23,19 @@ class CollectionViewCell: UICollectionViewCell {
         return image
     }()
     
+    var videoIcon: UIImageView = {
+        let videoIcon = UIImageView()
+
+        videoIcon.image = UIImage(named: "iconfinder_video_camera_172629")
+        videoIcon.contentMode = .scaleAspectFit
+        return videoIcon
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        videoIcon.frame = CGRect(x: (self.frame.width/2) - 25, y: (self.frame.height/2) - 25, width: 50, height: 50)
+        self.photoOfCell.addSubview(videoIcon)
         self.addSubview(photoOfCell)
     }
 
@@ -32,26 +43,15 @@ class CollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(from: Photos) {
-        let urlString = "https://farm"
-
-        var url: String {
-            let urlString = "https://farm"
-            let farm = String(from.farm)
-            let server = from.server
-            let primary = from.id
-            let secret = from.secret
-            let url = urlString.appending(farm + ".").appending("staticflickr.com/").appending(server + "/").appending(primary + "_").appending(secret + "_m.jpg")
-            return url
+    func configure(photo: Photos) {
+        
+        if photo.photoInfo?.photo?.media == "video" {
+            videoIcon.isHidden = false
+        } else {
+            videoIcon.isHidden = true
         }
-        guard let urlStr = URL(string: url) else { return }
-        DispatchQueue.global().async {
-            guard let data = try? Data(contentsOf: urlStr) else { return }
-            DispatchQueue.main.async {
-                self.photoOfCell.image = UIImage(data: data)
-                self.image = UIImage(data: data)
-            }
-        }
+        
+        photoOfCell.sd_setImage(with: URL(string: photo.url), completed: nil)
     }
 
 }

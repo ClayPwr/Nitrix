@@ -39,7 +39,7 @@ public class TableViewCell: UITableViewCell {
            label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
            return label
     }()
-    lazy var commentsLabel: UILabel = {
+    lazy var videosLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.alpha = 0.8
@@ -60,7 +60,7 @@ public class TableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.addSubview(commentsLabel)
+        self.contentView.addSubview(videosLabel)
         self.addSubview(photoSetLabel)
         self.addSubview(numberItemsLabel)
         self.addSubview(viewsLabel)
@@ -72,7 +72,7 @@ public class TableViewCell: UITableViewCell {
     }
 
     func configureCell(from: PhotoTableCellModel) {
-        commentsLabel.text = from.countComment
+        videosLabel.text = from.countVideos
         photoSetLabel.text = from.titleContent
         numberItemsLabel.text = from.countPhoto
         viewsLabel.text = from.countViews

@@ -81,7 +81,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             make.left.equalTo(70)
         }
         
-        cell.commentsLabel.snp.makeConstraints { (make) in
+        cell.videosLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(-10)
             make.right.equalTo(-20)
         }

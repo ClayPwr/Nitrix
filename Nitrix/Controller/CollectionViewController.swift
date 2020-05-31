@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 import Alamofire
+import AVFoundation
+import AVKit
 
 class CollectionViewController: UIViewController {
     
@@ -46,8 +48,33 @@ class CollectionViewController: UIViewController {
         
         dataFetcherService.fetchAlbum(urlPartUserId: userId, urlPartAlbumId: albumId) { (album) in
             
-            if let albums = album?.photoset?.photo {
-                let photos = albums.map{ $0 }
+            guard let photos = album?.photoset?.photo else { return }
+        
+            let group = DispatchGroup()
+            
+            for photo in photos {
+                
+                group.enter()
+                
+                self.dataFetcherService.fetchPhotoInfo(photoId: photo.id) { (photoinfo) in
+                    
+                    photo.photoInfo = photoinfo
+                    group.leave()
+                }
+                
+                group.enter()
+                self.dataFetcherService.getSizes(photoId: photo.id) { sizes in
+                    if let sizes = sizes?.sizes?.size{
+                        
+                        photo.sizes = sizes
+
+                    }
+                    group.leave()
+                }
+            }
+            
+            group.notify(queue: .main) {
+                               
                 self.photos = photos
                 self.collectionView.reloadData()
             }
@@ -93,7 +120,7 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.collectionViewCell, for: indexPath) as! CollectionViewCell
 
-        cell.configure(from: photos[indexPath.row])
+        cell.configure(photo: photos[indexPath.row])
         
         cell.photoOfCell.snp.makeConstraints { (make) in
             make.left.right.bottom.top.equalToSuperview()
@@ -121,11 +148,32 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        selectedPhoto = photos[indexPath.row]
+        let photo = photos[indexPath.row]
         
-        performSegue(withIdentifier: "ShowImage", sender: nil)
+        if photo.photoInfo?.photo?.media == "photo" {
+            
+            selectedPhoto = photo
+            performSegue(withIdentifier: "ShowImage", sender: nil)
+            
+        } else if photo.photoInfo?.photo?.media == "video" {
+            
+            guard let neededItem = photo.sizes?.first(where: { $0.label == "720p" }) else {return}
+            self.showVideoPlayer(url: neededItem.source)
+            
+        }
     }
     
+    func showVideoPlayer(url: String) -> Void {
+        
+        let videoURL = URL(string: url)
+        let player = AVPlayer(url: videoURL!)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 

@@ -28,6 +28,8 @@
 		6ED172A024813569006F8947 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED1729F24813569006F8947 /* AppUtility.swift */; };
 		6ED172A224813B57006F8947 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED172A124813B57006F8947 /* FullScreenImageViewController.swift */; };
 		6ED172A424814434006F8947 /* SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED172A324814433006F8947 /* SetImage.swift */; };
+		6ED172C62482A82D006F8947 /* PhotoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED172C52482A82D006F8947 /* PhotoInfo.swift */; };
+		6ED172C82483AFC5006F8947 /* PhotoSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED172C72483AFC5006F8947 /* PhotoSize.swift */; };
 		71C9241C86AE56397C04BC95 /* Pods_Nitrix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606F5012E0DABF9B949F674A /* Pods_Nitrix.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +43,7 @@
 		6ED17272247EB0B1006F8947 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6ED17275247EB0B1006F8947 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6ED17277247EB0B1006F8947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6ED1727D247EB0F0006F8947 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		6ED1727D247EB0F0006F8947 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6ED17283247EB305006F8947 /* GalleryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryList.swift; sourceTree = "<group>"; };
 		6ED17287247EB6CB006F8947 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		6ED17289247EB86B006F8947 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
@@ -56,6 +58,8 @@
 		6ED1729F24813569006F8947 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		6ED172A124813B57006F8947 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		6ED172A324814433006F8947 /* SetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetImage.swift; sourceTree = "<group>"; };
+		6ED172C52482A82D006F8947 /* PhotoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfo.swift; sourceTree = "<group>"; };
+		6ED172C72483AFC5006F8947 /* PhotoSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSize.swift; sourceTree = "<group>"; };
 		BF878AD2D563E0F1B62938C1 /* Pods-Nitrix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nitrix.release.xcconfig"; path = "Target Support Files/Pods-Nitrix/Pods-Nitrix.release.xcconfig"; sourceTree = "<group>"; };
 		CB1E5B2AB3B0738F72DDD086 /* Pods-Nitrix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nitrix.debug.xcconfig"; path = "Target Support Files/Pods-Nitrix/Pods-Nitrix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +167,8 @@
 				6ED17283247EB305006F8947 /* GalleryList.swift */,
 				6ED17290247FC399006F8947 /* PhotoSetList.swift */,
 				6ED1729D248121F1006F8947 /* PhotoSetPhoto.swift */,
+				6ED172C52482A82D006F8947 /* PhotoInfo.swift */,
+				6ED172C72483AFC5006F8947 /* PhotoSize.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,8 +315,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ED172C62482A82D006F8947 /* PhotoInfo.swift in Sources */,
 				6ED1728A247EB86B006F8947 /* NetworkDataFetcher.swift in Sources */,
 				6ED17291247FC39A006F8947 /* PhotoSetList.swift in Sources */,
+				6ED172C82483AFC5006F8947 /* PhotoSize.swift in Sources */,
 				6ED172A024813569006F8947 /* AppUtility.swift in Sources */,
 				6ED1729924800ABB006F8947 /* CollectionViewCell.swift in Sources */,
 				6ED1728E247EC23B006F8947 /* TableViewCell.swift in Sources */,

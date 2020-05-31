@@ -10,9 +10,9 @@ import Foundation
 
 class PhotoTableCellModel {
     
-    var countComment: String {
+    var countVideos: String {
         
-        return (photoSet.count_comments ?? "count_comments")  + " comments"
+        return String(photoSet.count_videos)  + " Videos"
     }
     
     var titleContent: String {
@@ -20,7 +20,7 @@ class PhotoTableCellModel {
     }
     
     var countPhoto: String {
-        return String(photoSet.count_photos) + " Items"
+        return String(photoSet.count_photos) + " Photos"
     }
     
     var countViews: String {
