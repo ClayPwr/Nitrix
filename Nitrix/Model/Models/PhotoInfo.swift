@@ -25,19 +25,6 @@ struct Photo: Codable {
     let license: String?
     let safety_level: String
     let rotation: Int
-//    let owner":{},
-//          "title":{},
-//          "description":{},
-//          "visibility":{},
-//          "dates":{},
-//          "views":"2053",
-//          "editability":{},
-//          "publiceditability":{},
-//          "usage":{},
-//          "comments":{},
-//          "notes":{},
-//          "people":{},
-//          "tags":{},
-//          "urls":{},
+
     let media: String
 }

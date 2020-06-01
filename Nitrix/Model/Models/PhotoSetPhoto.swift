@@ -42,22 +42,9 @@ class Photos: Codable {
     
     var url: String {
         
-        if photoInfo?.photo?.media == "video" {
-            
-            let size = sizes?.first(where: { (size) -> Bool in
-                return size.label == "Small 400"
-            })
-            
-            return size?.source ?? ""
-        }else {
-            let urlString = "https://farm"
-            let farm = String(self.farm)
-            let server = self.server
-            let primary = self.id
-            let secret = self.secret
-            let url = urlString.appending(farm + ".").appending("staticflickr.com/").appending(server + "/").appending(primary + "_").appending(secret + "_m.jpg")
-            return url
-        }
+        let size = sizes?.first(where: { $0.label == "Small 400" })
         
+        return size?.source ?? ""
+
     }
 }

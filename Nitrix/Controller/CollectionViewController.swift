@@ -166,7 +166,10 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
         } else if photo.photoInfo?.photo?.media == "video" {
             
             guard let neededItem = photo.sizes?.first(where: { $0.label == "720p" }) else {return}
-            self.showVideoPlayer(url: neededItem.source)
+            if let source = neededItem.source {
+                
+                self.showVideoPlayer(url: source)
+            }
             
         }
     }
