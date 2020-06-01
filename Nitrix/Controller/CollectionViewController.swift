@@ -33,6 +33,11 @@ class CollectionViewController: UIViewController {
 
         return collectionView
     }()
+    
+    lazy var activityAndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        return indicator
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +54,11 @@ class CollectionViewController: UIViewController {
         dataFetcherService.fetchAlbum(urlPartUserId: userId, urlPartAlbumId: albumId) { (album) in
             
             guard let photos = album?.photoset?.photo else { return }
-        
+            
             let group = DispatchGroup()
             
             for photo in photos {
-                
                 group.enter()
-                
                 self.dataFetcherService.fetchPhotoInfo(photoId: photo.id) { (photoinfo) in
                     
                     photo.photoInfo = photoinfo
@@ -67,14 +70,12 @@ class CollectionViewController: UIViewController {
                     if let sizes = sizes?.sizes?.size{
                         
                         photo.sizes = sizes
-
+                        group.leave()
                     }
-                    group.leave()
                 }
             }
-            
             group.notify(queue: .main) {
-                               
+                self.activityAndicator.stopAnimating()
                 self.photos = photos
                 self.collectionView.reloadData()
             }
@@ -98,6 +99,9 @@ class CollectionViewController: UIViewController {
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.collectionViewCell)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        view.addSubview(activityAndicator)
+        activityAndicator.startAnimating()
     }
     
     func runSnapkitAuthLayout(){
@@ -106,6 +110,10 @@ class CollectionViewController: UIViewController {
 
             make.left.right.bottom.top.equalToSuperview()
  
+        }
+        
+        activityAndicator.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
         }
     }
 }
